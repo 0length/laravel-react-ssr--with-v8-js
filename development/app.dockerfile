@@ -22,11 +22,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY . /var/www
 
 
-RUN  apt-get update -y && python-software-properties \
+RUN  apt-get update -y && apt-get install -y python-software-properties \
         && add-apt-repository -y ppa:ondrej/php \
         && add-apt-repository -y ppa:pinepain/libv8-archived \
         && apt update \
-        && apt-get install php7.2 php7.2-curl php7.2-dev php7.2-mbstring php7.2-zip php7.2-mysql libv8-dev \
+        && apt-get install -y php7.2 php7.2-curl php7.2-dev php7.2-mbstring php7.2-zip php7.2-mysql libv8-dev \
         && pecl install v8js \
         && echo 'extension=v8js.so' >> /etc/php/7.2/cli/conf.d/20-v8js.ini  \
         && php -i | grep v8js
