@@ -27,8 +27,25 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         && pecl install mcrypt-1.0.2 \
         && pecl install v8js-2.1.1 \
         && docker-php-ext-install pdo_mysql \
-        && docker-php-ext-enable v8js \
         && docker-php-ext-enable mcrypt
+
+RUN apt-get update -y && apt-get install -y build-essential curl git python libglib2.0-dev \
+        && cd /tmp \
+        && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
+        && export PATH=`pwd`/depot_tools:"$PATH" \
+        && fetch v8\
+        && cd v8 \
+        && git checkout 6.4.388.18 \
+        && gclient sync \
+        && tools/dev/v8gen.py -vv x64.release -- is_component_build=true use_custom_libcxx=false \
+        && ninja -C out.gn/x64.release/ \
+        && mkdir -p /opt/v8/{lib,include} \
+        && cp out.gn/x64.release/lib*.so out.gn/x64.release/*_blob.bin out.gn/x64.release/icudtl.dat /opt/v8/lib/ \
+        && cp -R include/* /opt/v8/include/ \
+        && apt-get install -y patchelf \
+        && for A in /opt/v8/lib/*.so; do sudo patchelf --set-rpath '$ORIGIN' $A; done \
+        && pecl install v8js-2.1.1 \
+        && docker-php-ext-enable v8js
 
 RUN mv .env.prod .env
 RUN php artisan key:generate
