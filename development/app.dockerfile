@@ -22,12 +22,12 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY . /var/www
 
 
-RUN  apt-get update -y && apt-get install -y software-properties-common \
-        && add-apt-repository -y ppa:ondrej/php \
-        && add-apt-repository -y ppa:pinepain/libv8-archived \
-        && apt update \
-        && apt-get install -y php7.2 php7.2-curl php7.2-dev php7.2-mbstring php7.2-zip php7.2-mysql libv8-dev \
-        && pecl install v8js \
+RUN  apt-get update -y && cd /tmp \
+        && git clone https://github.com/phpv8/v8js.git \
+        && cd v8js \
+        && phpize \
+        && ./configure --with-v8js=/opt/v8 \
+        && make && make test && make install \
         && echo 'extension=v8js.so' >> /etc/php/7.2/cli/conf.d/20-v8js.ini  \
         && php -i | grep v8js
 
