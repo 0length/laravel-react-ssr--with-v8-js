@@ -22,7 +22,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY . /var/www
 
 
-RUN  apt-get update -y && apt-get install -y python-software-properties \
+RUN  apt-get update -y && apt-get install -y software-properties-common \
         && add-apt-repository -y ppa:ondrej/php \
         && add-apt-repository -y ppa:pinepain/libv8-archived \
         && apt update \
