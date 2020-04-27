@@ -25,7 +25,6 @@ COPY . /var/www
 RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         libmagickwand-dev --no-install-recommends \
         && pecl install mcrypt-1.0.2 \
-        && pecl install v8js-2.1.1 \
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-enable mcrypt
 
