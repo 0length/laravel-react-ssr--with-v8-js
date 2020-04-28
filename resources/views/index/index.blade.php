@@ -29,7 +29,7 @@ if ($isServerRenderingEnabled) {
   </head>
   <body>
     <div id="app">@php echo $markup; @endphp</div>
-    <script src="{{asset('/dist/index.js')}}"></script>
+    <script src="{{asset('dist/index.js')}}"></script>
 
     <script>
         document.onreadystatechange = function () {
