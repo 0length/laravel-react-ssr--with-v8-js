@@ -28,7 +28,7 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-enable mcrypt
 
-RUN add-apt-repository -y ppa:pinepain/libv8-6.1 && apt-get install -y libv8-6.1 libv8-6.1-dev \
+RUN apt-get install -y libv8-6.1 libv8-6.1-dev \
         && cd /tmp \
         && git clone https://github.com/phpv8/v8js.git \
         && cd v8js \
