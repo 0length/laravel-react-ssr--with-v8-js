@@ -5,7 +5,7 @@ module.exports = [
         mode: 'development',
         target: 'web',
         entry: {
-            'index.0.js': path.resolve(__dirname, 'src/index.ts'),
+            'index2.js': path.resolve(__dirname, 'src/index.ts'),
             // 'multipleRoutes.js': path.resolve(__dirname, 'view/portfolio/routes.js')
         },
         resolve: {
