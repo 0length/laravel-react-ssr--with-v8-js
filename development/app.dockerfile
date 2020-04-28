@@ -28,7 +28,7 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-enable mcrypt
 
-RUN apt-get install -y libv8-6.1 libv8-6.1-dev \
+RUN apt-get install -y libnode-dev \
         && cd /tmp \
         && git clone https://github.com/phpv8/v8js.git \
         && cd v8js \
@@ -37,10 +37,7 @@ RUN apt-get install -y libv8-6.1 libv8-6.1-dev \
         && make \
         && make test \
         && make install \
-        && echo extension=v8js.so > /etc/php/7.1/mods-available/v8js.ini \
-        && ln -s /etc/php/7.1/mods-available/v8js.ini /etc/php/7.1/fpm/conf.d/99-v8js.ini \
-        && ln -s /etc/php/7.1/mods-available/v8js.ini /etc/php/7.1/cli/conf.d/99-v8js.ini \
-        && rm -rf /tmp/*
+        && docker-php-ext-enable v8js
 
 RUN mv .env.prod .env
 RUN php artisan key:generate
