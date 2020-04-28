@@ -79,5 +79,6 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
 RUN mv .env.prod .env
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt-get update && apt-get install -y nodejs && apt-get clean
+RUN npm install
 RUN npm run ssr-build
 RUN php artisan key:generate
