@@ -36,8 +36,11 @@ RUN add-apt-repository -y ppa:pinepain/libv8-6.1 && apt-get install -y libv8-6.1
         && ./configure --with-v8js=/opt/v8 LDFLAGS="-lstdc++" \
         && make \
         && make test \
-        && sudo make install \
-        && docker-php-ext-enable v8js
+        && make install \
+        && echo extension=v8js.so > /etc/php/7.1/mods-available/v8js.ini \
+        && ln -s /etc/php/7.1/mods-available/v8js.ini /etc/php/7.1/fpm/conf.d/99-v8js.ini \
+        && ln -s /etc/php/7.1/mods-available/v8js.ini /etc/php/7.1/cli/conf.d/99-v8js.ini \
+        && rm -rf /tmp/*
 
 RUN mv .env.prod .env
 RUN php artisan key:generate
