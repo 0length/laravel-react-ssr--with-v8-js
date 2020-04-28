@@ -9,4 +9,7 @@ globalAny.React = React;
 globalAny.ReactDom = ReactDom;
 globalAny.ReactDomServer = ReactDomServer;
 globalAny.App = App;
+if(!global){
+    global = {} as any
+}
 global = { ...global, ...globalAny}
