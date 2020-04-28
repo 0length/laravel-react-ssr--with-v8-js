@@ -11,7 +11,7 @@ ARG V8_VERSION=7.5.288.30
 # See https://github.com/phpv8/v8js/issues/397 for flags
 RUN apt-get update  \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        git subversion make g++ python2.7 curl  wget bzip2 xz-utils pkg-config  \
+        git subversion make g++ python2.7 curl  wget bzip2 xz-utils pkg-config  wget gnupg locales unzip dialog apt-utils \
     && ln -s /usr/bin/python2.7 /usr/bin/python  \
     \
     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /tmp/depot_tools \
@@ -77,4 +77,7 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         && docker-php-ext-enable mcrypt
 
 RUN mv .env.prod .env
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get update && apt-get install -y nodejs && apt-get clean
+RUN npm run ssr-build
 RUN php artisan key:generate

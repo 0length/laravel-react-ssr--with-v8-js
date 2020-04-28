@@ -1,0 +1,30 @@
+{
+    "exclude": [
+      "./prisma/*",
+      "**/*.js",
+      "./node_modules",
+      "dist",
+      "dist/*", 
+      "**/*.spec.ts",
+      "**/*.test.ts",
+      "./jest.config.js",
+  ],
+    "include": ["./"],
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "allowJs": false, 
+      // "noEmit": true,
+      "jsx": "react",  
+      "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+      "module": "none", 
+      "strict": true,
+      "moduleResolution": "node",
+      "removeComments": true,
+      // "outDir": "dist",
+      // "sourceMap": true,
+      // "declaration": true
+      // "types": [],
+      // "outFile": "dist/app.js",
+    }
+   
+  }
