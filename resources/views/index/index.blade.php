@@ -8,7 +8,7 @@ if ($isServerRenderingEnabled) {
       $default_prop = json_encode($props);
       $v8 = new V8Js();
       $js[] = "var global = global || this, self = self || this, window = window || this;";
-      $js[] = file_get_contents('./../../../public/dist/index.js', true);
+      $js[] = File::get(storage_path('public/dist/index.js'));
       $js[] = "print(ReactDomServer.renderToString(React.createElement(${component}, ${default_prop})));";
       $code = implode(";\n", $js);
       ob_start();
