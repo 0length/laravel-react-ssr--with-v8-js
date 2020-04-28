@@ -28,23 +28,14 @@ RUN  apt-get update -y && apt-get install -y libmcrypt-dev \
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-enable mcrypt
 
-RUN apt-get update -y && apt-get install -y build-essential curl git python libglib2.0-dev \
-        # && cd /tmp \
-        # && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
-        # && export PATH=`pwd`/depot_tools:"$PATH" \
-        # && fetch v8\
-        # && cd v8 \
-        # && git checkout 6.4.388.18 \
-        # && gclient sync \
-        # && tools/dev/v8gen.py -vv x64.release -- is_component_build=true use_custom_libcxx=false \
-        # && ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5 \
-        # && ninja -C out.gn/x64.release/ \
-        # && mkdir -p /opt/v8/{lib,include} \
-        # && cp out.gn/x64.release/lib*.so out.gn/x64.release/*_blob.bin out.gn/x64.release/icudtl.dat /opt/v8/lib/ \
-        # && cp -R include/* /opt/v8/include/ \
-        # && apt-get install -y patchelf \
-        # && for A in /opt/v8/lib/*.so; do sudo patchelf --set-rpath '$ORIGIN' $A; done \
-        && pecl install v8js-2.1.1 \
+RUN cd /tmp \
+        && git clone https://github.com/phpv8/v8js.git \
+        && cd v8js \
+        && phpize \
+        && ./configure --with-v8js=/opt/v8 LDFLAGS="-lstdc++" \
+        && make \
+        && make test \
+        && sudo make install \
         && docker-php-ext-enable v8js
 
 RUN mv .env.prod .env
