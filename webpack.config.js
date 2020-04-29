@@ -5,7 +5,7 @@ module.exports = [
         mode: 'development',
         target: 'web',
         entry: {
-            'index2.js': path.resolve(__dirname, 'src/index.ts'),
+            'main.js': path.resolve(__dirname, 'src/index.ts'),
             // 'multipleRoutes.js': path.resolve(__dirname, 'view/portfolio/routes.js')
         },
         resolve: {
@@ -26,7 +26,7 @@ module.exports = [
             }]
         },
         output: {
-            path: path.resolve(__dirname, 'public/vendor/dist'),
+            path: path.resolve(__dirname, 'public/vendor'),
             filename: '[name]'
         },
             // When importing a module whose path matches one of the following, just
