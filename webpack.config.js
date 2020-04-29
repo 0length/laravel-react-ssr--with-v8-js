@@ -26,7 +26,7 @@ module.exports = [
             }]
         },
         output: {
-            path: path.resolve(__dirname, 'public/dist'),
+            path: path.resolve(__dirname, 'public/vendor/dist'),
             filename: '[name]'
         },
             // When importing a module whose path matches one of the following, just

@@ -8,7 +8,7 @@ if ($isServerRenderingEnabled) {
       $default_prop = json_encode($props);
       $v8 = new V8Js();
       $js[] = "var global = global || this, self = self || this, window = window || this;";
-      $js[] = File::get(public_path('dist/index2.js'));
+      $js[] = File::get(public_path('vendor/dist/index2.js'));
       $js[] = "print(ReactDomServer.renderToString(React.createElement(${component}, ${default_prop})));";
       $code = implode(";\n", $js);
       ob_start();
@@ -29,7 +29,8 @@ if ($isServerRenderingEnabled) {
   </head>
   <body>
     <div id="app">@php echo $markup; @endphp</div>
-    <script src="{{ asset("dist/index2.js") }}"></script>
+    <script src="{{ asset('public/vendor/dist/index2.js') }}"></script>
+    <div>{{ dd(File::allFiles(public_path())) }}</div>
 
     <script>
         document.onreadystatechange = function () {
