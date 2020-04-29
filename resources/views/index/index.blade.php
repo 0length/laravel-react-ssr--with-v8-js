@@ -2,6 +2,7 @@
 $isServerRenderingEnabled = true;
 $markup = '';
 if ($isServerRenderingEnabled) {
+    require_once dirname(__FILE__) . './../../../vendor/autoload.php';
 
     function getMarkup($component, $props) {
       $default_prop = json_encode($props);
