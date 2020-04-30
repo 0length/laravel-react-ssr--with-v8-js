@@ -29,8 +29,8 @@ if ($isServerRenderingEnabled) {
   </head>
   <body>
     <div id="app">@php echo $markup; @endphp</div>
-    <script src="{{ asset('vendor/main.js') }}"></script>
-    <div>{{ dd(File::allFiles(public_path())) }}</div>
+    <script src="{{ asset('/script/main.js') }}"></script>
+     <div>{{-- dd(File::allFiles(public_path())) --}}</div>
 
     <script>
         document.onreadystatechange = function () {

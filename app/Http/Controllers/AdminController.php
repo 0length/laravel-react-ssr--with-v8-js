@@ -16,6 +16,11 @@ class AdminController extends Controller
         return view('index.index');
     }
 
+    public function script($name)
+    {
+        return File::get(public_path('vendor/'.$name.'.js'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
