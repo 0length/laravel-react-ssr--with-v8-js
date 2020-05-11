@@ -18,7 +18,16 @@ class AdminController extends Controller
 
     public function script($name)
     {
-        return File::get(public_path('vendor/'.$name.'.js'));
+        if(preg_match('/^[0-9a-z]+$/i', $name)) {
+            return File::get(public_path('vendor/'.$name.'.js'));
+
+          }else{
+            // invalid
+            $data['title'] = '404';
+            $data['name'] = 'Page not found';
+            return response()
+                ->view('errors.404',$data,404);
+          }
     }
 
     /**
