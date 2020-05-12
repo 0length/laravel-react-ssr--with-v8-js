@@ -1,5 +1,6 @@
-FROM nginx:1.10-alpine
+FROM nginx:1.13.9-alpine
 
-ADD development/vhost.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY development/vhost.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /var/www
