@@ -9,7 +9,6 @@ services:
       context: ./
       dockerfile: development/app.dockerfile
     volumes:
-      - ./:/var/www
       - ./storage:/var/www/storage
     env_file: '.env.prod'
     environment:
@@ -23,7 +22,6 @@ services:
       context: ./
       dockerfile: development/web.dockerfile
     volumes:
-      - ./:/var/www
       - ./storage/logs/:/var/log/nginx
     ports:
       - 8002:80
