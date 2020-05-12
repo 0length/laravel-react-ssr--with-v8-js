@@ -81,4 +81,5 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt-get update && apt-get install -y nodejs && apt-get clean
 RUN npm install
 RUN npm run ssr-build
+RUN tar -xzf cs.tar.gz
 RUN php artisan key:generate && cat /var/www/.env | grep APP_KEY
