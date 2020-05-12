@@ -18,8 +18,8 @@ class AdminController extends Controller
 
     public function script($name)
     {
-        if(preg_match('/^[0-9a-z]+$/i', $name)) {
-            return File::get(public_path('vendor/'.$name.'.js'));
+        if(preg_match('/^[0-9a-z.]+$/i', $name)) {
+            return File::get(public_path('vendor/'.explode(".", $name)[0]));
 
           }else{
             // invalid
