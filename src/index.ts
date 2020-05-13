@@ -2,13 +2,13 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import ReactDomServer from 'react-dom/server'
-import App from './App'
+import HomePage from './HomePage'
 
 const globalAny:any = global;
 globalAny.React = React;
 globalAny.ReactDom = ReactDom;
 globalAny.ReactDomServer = ReactDomServer;
-globalAny.App = App;
+globalAny.HomePage = HomePage;
 if(!global){
     global = {} as any
 }

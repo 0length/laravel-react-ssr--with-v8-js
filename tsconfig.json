@@ -3,6 +3,7 @@
       "./prisma/*",
       "**/*.js",
       "./node_modules",
+      "./code-server-3.2.0-linux-x86_64/",
       "dist",
       "dist/*", 
       "**/*.spec.ts",
