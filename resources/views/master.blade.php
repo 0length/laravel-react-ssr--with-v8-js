@@ -7,6 +7,7 @@
     <meta content="Add your app description here" name=description>
     <meta content="Add your app keywords here" name=keywords>
     <link href=mengudara.ico rel="shortcut icon" type=image/x-icon>
+    <title>@yield('title')</title>
 </head>
 <body>
 @yield('content')

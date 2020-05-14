@@ -12,6 +12,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'AdminController@index');
-Route::get('/script/{name}', 'AdminController@script');
+Route::get('/script/{name}', 'IndexController@script');
+Route::get('/{path?}/{id?}', 'IndexController@index');

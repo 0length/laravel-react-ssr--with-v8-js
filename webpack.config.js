@@ -2,7 +2,7 @@ var path = require('path')
 
 module.exports = [
     {
-        mode: 'development',
+        mode: 'production',
         target: 'web',
         entry: {
             'index': path.resolve(__dirname, 'src/index.ts'),

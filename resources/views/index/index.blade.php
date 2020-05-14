@@ -1,7 +1,10 @@
 
 @extends('master')
+@section('title')
+{!! $title !!}
+@endsection
 @section('content')
-<div id="app">{!! $isServerRenderingEnabled ? $markup : '' !!}</div>
+<div id='{!! $path !!}'>{!! $isServerRenderingEnabled ? $markup : '' !!}</div>
 @endsection
 @section('script')
 <script src="{{ asset('/script/index.js') }}"></script>
@@ -11,8 +14,8 @@
       if (document.readyState === 'complete') {
         
         ReactDom.{!! $isServerRenderingEnabled ?'hydrate':'render'!!}(
-          React.createElement({!! $ComponentName !!}, {}),
-          document.getElementById('app')
+          React.createElement({!! $ComponentName !!}, {!! $props !!}),
+          document.getElementById('{!! $path !!}')
         );
         
       }
