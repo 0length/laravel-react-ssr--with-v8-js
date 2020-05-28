@@ -1,4 +1,11 @@
 [Demo Page][http://mengudara.online:8002]
+ ## prerequirement 
+ -docker and docker composer
+ ## how to install
+ just build and run with docker composer and setup laravel in general
+
+
+***
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
